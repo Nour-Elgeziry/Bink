@@ -9,21 +9,16 @@ def req1():
     # read csv file and convert value to float and append list
     with open('Python Developer Test Dataset.csv', 'r') as file:
         reader = csv.DictReader(file)
-        
-        rentList = list()
-        for row in reader:
-            rentList.append(float(row['Current Rent']))
-        
+        #add dict to array to enable iteration
+        data = [r for r in reader]
         #sort the list
-        sortedRentList = sorted(rentList)
-        #output first 5 values
-        count = 0
-        for val in sortedRentList:
-            if count > 4:
-                break
-            print(val)
-            count += 1
+        data.sort(key=lambda r:float(r['Current Rent']))
+        print(data[:5])
 
+        
+        
+req1()
+'''
 #requirement 2   
 def req2():
     with open('Python Developer Test Dataset.csv', 'r') as file:
@@ -89,16 +84,17 @@ def allReq():
 
 #if __name__ == '__main__':
 #dictionary to hold key value pairs of finctions to perform depending on user input
-func_dict = {'1':req1, '2':req2, '3':req3, '4':req4, '5': allReq}
+'''
+
+'''func_dict = {'1':req1, '2':req2, '3':req3, '4':req4, '5': allReq}
 userInput = input('Enter 1,2,3,4 to perform one of the operations or Enter 5 to perform all operations: ')
 try:
-    #check if userinput is a number
-    value = int(userInput)
+    value = int(userInput) #check if userinput is a number
     if value in range(1,6):
         func_dict[userInput]()
     else: print('Entered number out of range, please reload program and choose a number between 1 and 5')
 except:print('Please reload the program and enter a number')
-
+'''
 
 
 
