@@ -1,7 +1,6 @@
 import json# used to print data 
 import datetime #used for requirement 4
-# read csv file
-import csv
+import csv # read csv file
 #requirenment 1
 def req1(data):
     #sort the list
@@ -64,5 +63,3 @@ with open('Python Developer Test Dataset.csv', 'r') as file:
     if userInput in func_dict.keys():
         run(userInput, data)           
     else: print('Entered number out of range or a letter was entered, please reload program and choose a number between 1 and 5')
-
-

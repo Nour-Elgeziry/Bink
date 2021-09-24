@@ -3,7 +3,6 @@ import requiremetns
 import objToTest
 import csv
 import datetime
-
 class testRequirements(unittest.TestCase):
     def test_req1_with_given_csv_file(self):
         with open('Python Developer Test Dataset.csv', 'r') as file:
@@ -82,14 +81,6 @@ class testRequirements(unittest.TestCase):
             result = requiremetns.allReq(data)
             #check the length of returned dict equals 4
             self.assertEqual(len(result), 4)
-
-
-
-    
-
-
-
-
 
 if __name__ == "__main__":
     unittest.main()
