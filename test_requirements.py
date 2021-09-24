@@ -2,6 +2,7 @@ import unittest
 import requiremetns 
 import objToTest
 import csv
+import datetime
 
 class testRequirements(unittest.TestCase):
     def test_req1_with_given_csv_file(self):
@@ -59,6 +60,30 @@ class testRequirements(unittest.TestCase):
             #check returned max tenant count equals 16
             maxMastKey = max(result, key=result.get)
             self.assertEqual(result[maxMastKey],16)
+
+    def test_req4_data_leaseYear_between_given_dates(self):
+        with open('Python Developer Test Dataset.csv', 'r') as file:
+            reader = csv.DictReader(file)
+            data = [row for row in reader]
+            result = requiremetns.req4(data)
+            dates = [row['Lease Start Date'] for row in result]
+            #check each date is between boundaries
+            lowerBound = datetime.datetime(1999, 6, 1)
+            upperBound = datetime.datetime(2007, 8, 31)
+            for date in dates:
+                date = datetime.datetime.strptime(date, '%d %b %Y')
+                self.assertGreater(date, lowerBound)
+                self.assertLess(date, upperBound)
+    
+    def test_req5_should_retunr_dict_of_length_4_key_value_pairs(self):
+        with open('Python Developer Test Dataset.csv', 'r') as file:
+            reader = csv.DictReader(file)
+            data = [row for row in reader]
+            result = requiremetns.allReq(data)
+            #check the length of returned dict equals 4
+            self.assertEqual(len(result), 4)
+
+
 
     
 
