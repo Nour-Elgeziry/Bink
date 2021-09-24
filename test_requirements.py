@@ -43,5 +43,28 @@ class testRequirements(unittest.TestCase):
             #46500.0 calculated total rent
             self.assertEqual(46500.0, totalRent)
 
+    def test_req3_max_of_15_tenants(self):
+         with open('Python Developer Test Dataset.csv', 'r') as file:
+            reader = csv.DictReader(file)
+            data = [row for row in reader]
+            result = requiremetns.req3(data)
+            #check returned no of tenants equals 15
+            self.assertEqual(len(result), 15)
+
+    def test_req3_maximum_tenant_mast_count_equals_16(self):
+        with open('Python Developer Test Dataset.csv', 'r') as file:
+            reader = csv.DictReader(file)
+            data = [row for row in reader]
+            result = requiremetns.req3(data)
+            #check returned max tenant count equals 16
+            maxMastKey = max(result, key=result.get)
+            self.assertEqual(result[maxMastKey],16)
+
+    
+
+
+
+
+
 if __name__ == "__main__":
     unittest.main()

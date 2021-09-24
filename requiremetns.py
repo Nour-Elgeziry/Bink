@@ -31,8 +31,6 @@ def req3(data):
         if not row['Tenant Name'] in tenantMastCount: 
             tenantMastCount[row['Tenant Name']] = 0
         tenantMastCount[row['Tenant Name']] += 1   
-    #Printing 
-    print("Tenant mast count:")
     return tenantMastCount
 
 #requirement 4    
