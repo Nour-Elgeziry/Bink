@@ -1,4 +1,4 @@
-import json
+import json# used to print data 
 import datetime #used for requirement 4
 # read csv file
 import csv
@@ -53,18 +53,18 @@ def allReq(data):
         if key != '5': 
             result[key] = func(data)
     return result
+
 #dictionary to hold key value pairs of finctions to perform depending on user input
 func_dict = {'1':req1, '2':req2, '3':req3, '4':req4, '5': allReq}
 def run(name, data):
     print(json.dumps(func_dict[name](data), indent=4))
 
-userInput = input('Enter 1,2,3,4 to perform one of the operations or Enter 5 to perform all operations: ')
-try:
-    value = userInput #check if userinput is a number
-    with open('Python Developer Test Dataset.csv', 'r') as file:
-        reader = csv.DictReader(file)
-        data = [row for row in reader]
-        if value in func_dict.keys():
-            run(value, data)           
-        else: print('Entered number out of range, please reload program and choose a number between 1 and 5')
-except:print('Please reload the program and enter a number')
+userInput = input('Enter 1,2,3,4 to perform one of the operations or Enter 5 to perform all operations: ')    
+with open('Python Developer Test Dataset.csv', 'r') as file:
+    reader = csv.DictReader(file)
+    data = [row for row in reader]
+    if userInput in func_dict.keys():
+        run(userInput, data)           
+    else: print('Entered number out of range or a letter was entered, please reload program and choose a number between 1 and 5')
+
+
